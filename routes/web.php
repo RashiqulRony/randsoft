@@ -3,8 +3,14 @@
 use Illuminate\Support\Facades\Route;
 
 #Web route...
-Route::group(['prefix' => '/', 'as' => 'web.'], function () {
-    Route::get('/', [App\Http\Controllers\Web\WebController::class, 'index'])->name('home');
+Route::group(['namespace' => 'Web', 'as' => 'web.'], function () {
+    Route::get('/', 'WebController@index')->name('index');
+    Route::get('/about', 'WebController@about')->name('about');
+    Route::get('/services', 'WebController@services')->name('services');
+    Route::get('/features', 'WebController@features')->name('features');
+    Route::get('/portfolios', 'WebController@portfolios')->name('portfolios');
+    Route::get('/partnership', 'WebController@partnership')->name('partnership');
+    Route::get('/contact', 'WebController@contact')->name('contact');
 });
 
 #Admin route...
@@ -15,8 +21,8 @@ Route::group(['prefix' => 'randsoft'], function () {
         'verify' => false, // Email Verification Routes...
     ]);
 
-    Route::group(['middleware' => 'auth:web', 'as' => 'admin.'], function () {
-        Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+    Route::group(['namespace' => 'Admin', 'middleware' => 'auth:web', 'as' => 'admin.'], function () {
+        Route::get('/', 'DashboardController@index')->name('index');
     });
 });
 

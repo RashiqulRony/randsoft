@@ -75,4 +75,4 @@
 <script type="text/javascript" src="{{ asset('web/revolution/js/extensions/revolution.extension.navigation.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('web/revolution/js/extensions/revolution.extension.migration.min.js') }}"></script>
 <script type="text/javascript" src="{{ asset('web/revolution/js/extensions/revolution.extension.parallax.min.js') }}"></script>
-@yield('page_js')
+@stack('page_js')
